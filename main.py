@@ -3,11 +3,11 @@ import random
 
 st.set_page_config(page_title="랜덤 예능 게임 뽑기", page_icon="🎲")
 
-# 제목 영역
+# 제목
 st.markdown("<h1 style='text-align: center;'>🎉 수련회 랜덤 예능 게임 뽑기! 🎉</h1>", unsafe_allow_html=True)
 st.markdown("<h3 style='text-align: center;'>발랄한 게임으로 다 같이 빵! 터져보자 💥</h3>", unsafe_allow_html=True)
 
-# 게임 데이터
+# 게임 리스트
 games = [
     {
         "name": "몸으로 말해요 🎭",
@@ -98,13 +98,23 @@ games = [
         "desc": "헤드폰 끼고 소리 없이 말하기! 🤯",
         "items": "소음 차단 헤드폰, 단어 카드 🎧",
         "rules": "한 명은 헤드폰을 끼고, 다른 사람이 입모양으로 단어 전달! 맞히면 성공! 👄"
+    },
+    {
+        "name": "지구 오락실 게임 🌍🕹️",
+        "desc": "예능 '지구 오락실'처럼! 몸개그와 센스로 승부하는 대혼란 게임! 🎤🤣",
+        "items": "음악 🎶, 상황극 소품 🎭, 스마트폰 or 스피커 📱",
+        "rules": (
+            "① 게임 마스터가 미션을 제시 (예: ‘노래 멈추면 동작 멈추기’, ‘엉덩이로 이름 쓰기’ 등) 🎯\n"
+            "② 참가자들은 최대한 웃기고 창의적으로 수행 💃\n"
+            "③ 심사위원 or 다른 팀의 투표로 점수 부여! 🗳️"
+        )
     }
 ]
 
-# 아이콘 버튼 (이미지 대신 이모지 버튼 사용)
+# 버튼
 if st.button("🎈 랜덤 게임 뽑기! 클릭! 🎈"):
     game = random.choice(games)
-    st.balloons()  # 풍선 효과
+    st.balloons()
     st.markdown(f"## {game['name']}")
     st.markdown(f"**📌 설명:** {game['desc']}")
     st.markdown(f"**🎒 준비물:** {game['items']}")
@@ -112,6 +122,6 @@ if st.button("🎈 랜덤 게임 뽑기! 클릭! 🎈"):
 else:
     st.markdown("👉 위의 버튼을 눌러 게임을 뽑아보세요! 🎲")
 
-# 바닥 영역
+# 하단
 st.markdown("---")
 st.markdown("<p style='text-align: center; font-size: 14px;'>수련회 예능 게임 서비스 powered by Streamlit 🎉</p>", unsafe_allow_html=True)

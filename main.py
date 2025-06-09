@@ -3,12 +3,19 @@ import streamlit as st
 st.set_page_config(page_title="MBTI 과학 영화 추천기 🎬", page_icon="🧠", layout="centered")
 
 st.title("🔍 MBTI 맞춤 과학/수학 영화 추천기 🎥")
-st.markdown("당신의 **MBTI**를 입력하면, 성격에 딱 맞는 명작 영화를 추천해드려요! 🤓✨")
+st.markdown("당신의 MBTI에 어울리는 명작을 추천해드릴게요! 🤖🍿\n드롭다운에서 선택만 하면 끝! 👇")
 
-# MBTI 입력
-mbti_input = st.text_input("🧬 MBTI를 입력해주세요 (예: INFP, ESTJ)", max_chars=4).upper()
+# 드롭다운 메뉴로 MBTI 선택
+mbti_types = [
+    "INTJ", "INTP", "ENTJ", "ENTP",
+    "INFJ", "INFP", "ENFJ", "ENFP",
+    "ISTJ", "ISFJ", "ESTJ", "ESFJ",
+    "ISTP", "ISFP", "ESTP", "ESFP"
+]
 
-# MBTI별 추천 영화 목록
+selected_mbti = st.selectbox("🧬 MBTI를 선택하세요", options=mbti_types)
+
+# MBTI별 추천 영화 데이터
 mbti_movies = {
     "INTJ": ("인터스텔라 🌌", "복잡한 과학 이론과 감정의 교차점이 당신의 두뇌를 자극할 거예요!"),
     "INTP": ("테넷 ⏳", "논리적이고 복잡한 시간 개념이 지적 호기심을 자극할 거예요."),
@@ -28,14 +35,16 @@ mbti_movies = {
     "ESFP": ("백 투 더 퓨처 ⏳", "재미있고 활기찬 시간여행! 모험을 사랑하는 당신에게 딱!")
 }
 
-if mbti_input:
-    if mbti_input in mbti_movies:
-        movie, description = mbti_movies[mbti_input]
-        st.success(f"🎬 추천 영화: **{movie}**")
-        st.markdown(f"💡 이유: {description}")
-        st.balloons()  # 풍선 효과!
-    else:
-        st.warning("😅 알 수 없는 MBTI 유형이에요. 다시 확인해주세요!")
+# 추천 결과 표시
+if selected_mbti:
+    movie, description = mbti_movies[selected_mbti]
+    st.success(f"🎬 추천 영화: **{movie}**")
+    st.markdown(f"💡 이유: {description}")
+    st.balloons()  # 팡팡~🎈
+
+st.markdown("---")
+st.markdown("📽️ *이 추천은 약간의 과학적 통찰과 개발자의 감성으로 구성되었어요.* 😉")
+
 
 st.markdown("---")
 st.markdown("📽️ *이 추천은 약간의 과학적 통찰과 개발자의 감성으로 구성되었어요.* 😉")
